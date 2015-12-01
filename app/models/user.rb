@@ -15,5 +15,4 @@ class User < ActiveRecord::Base
   has_many :tasks, through: :courses
 
   has_many :reports
-  accepts_nested_attributes_for :reports
 end
