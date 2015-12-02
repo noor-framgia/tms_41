@@ -14,108 +14,120 @@
 ActiveRecord::Schema.define(version: 20151202022001) do
 
   create_table "activities", force: :cascade do |t|
-    t.string   "activity_type"
-    t.integer  "user_id"
-    t.integer  "target_id"
-    t.integer  "course_id"
-    t.integer  "subject_id"
-    t.integer  "task_id"
-    t.string   "action_message"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "activity_type",  limit: 255
+    t.integer  "user_id",        limit: 4
+    t.integer  "target_id",      limit: 4
+    t.integer  "course_id",      limit: 4
+    t.integer  "subject_id",     limit: 4
+    t.integer  "task_id",        limit: 4
+    t.string   "action_message", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
-  add_index "activities", ["user_id"], name: "index_activities_on_user_id"
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "course_subjects", force: :cascade do |t|
-    t.integer  "course_id"
-    t.integer  "subject_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "course_id",  limit: 4
+    t.integer  "subject_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
-  add_index "course_subjects", ["course_id"], name: "index_course_subjects_on_course_id"
-  add_index "course_subjects", ["subject_id"], name: "index_course_subjects_on_subject_id"
+  add_index "course_subjects", ["course_id"], name: "index_course_subjects_on_course_id", using: :btree
+  add_index "course_subjects", ["subject_id"], name: "index_course_subjects_on_subject_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
     t.boolean  "is_open"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "current_course_subject_tasks", force: :cascade do |t|
-    t.integer  "course_id"
-    t.integer  "subject_id"
-    t.integer  "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "course_id",  limit: 4
+    t.integer  "subject_id", limit: 4
+    t.integer  "task_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
-  add_index "current_course_subject_tasks", ["course_id"], name: "index_current_course_subject_tasks_on_course_id"
-  add_index "current_course_subject_tasks", ["subject_id"], name: "index_current_course_subject_tasks_on_subject_id"
-  add_index "current_course_subject_tasks", ["task_id"], name: "index_current_course_subject_tasks_on_task_id"
+  add_index "current_course_subject_tasks", ["course_id"], name: "index_current_course_subject_tasks_on_course_id", using: :btree
+  add_index "current_course_subject_tasks", ["subject_id"], name: "index_current_course_subject_tasks_on_subject_id", using: :btree
+  add_index "current_course_subject_tasks", ["task_id"], name: "index_current_course_subject_tasks_on_task_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",        limit: 4
     t.date     "todays_date"
-    t.text     "todays_task"
-    t.text     "tomorrows_task"
-    t.text     "free_comment"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.text     "todays_task",    limit: 65535
+    t.text     "tomorrows_task", limit: 65535
+    t.text     "free_comment",   limit: 65535
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
-  add_index "reports", ["user_id"], name: "index_reports_on_user_id"
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
 
   create_table "subjects", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "subject_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "subject_id",  limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  add_index "tasks", ["subject_id"], name: "index_tasks_on_subject_id"
+  add_index "tasks", ["subject_id"], name: "index_tasks_on_subject_id", using: :btree
 
   create_table "user_completed_tasks", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    limit: 4
+    t.integer  "task_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
-  add_index "user_completed_tasks", ["task_id"], name: "index_user_completed_tasks_on_task_id"
-  add_index "user_completed_tasks", ["user_id"], name: "index_user_completed_tasks_on_user_id"
+  add_index "user_completed_tasks", ["task_id"], name: "index_user_completed_tasks_on_task_id", using: :btree
+  add_index "user_completed_tasks", ["user_id"], name: "index_user_completed_tasks_on_user_id", using: :btree
 
   create_table "user_courses", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
+    t.integer  "user_id",      limit: 4
+    t.integer  "course_id",    limit: 4
     t.datetime "deadline"
     t.boolean  "is_completed"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "user_courses", ["course_id"], name: "index_user_courses_on_course_id"
-  add_index "user_courses", ["user_id"], name: "index_user_courses_on_user_id"
+  add_index "user_courses", ["course_id"], name: "index_user_courses_on_course_id", using: :btree
+  add_index "user_courses", ["user_id"], name: "index_user_courses_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "remember_digest"
-    t.string   "role"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.string   "remember_digest", limit: 255
+    t.string   "role",            limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
+  add_foreign_key "activities", "users"
+  add_foreign_key "course_subjects", "courses"
+  add_foreign_key "course_subjects", "subjects"
+  add_foreign_key "current_course_subject_tasks", "courses"
+  add_foreign_key "current_course_subject_tasks", "subjects"
+  add_foreign_key "current_course_subject_tasks", "tasks"
+  add_foreign_key "reports", "users"
+  add_foreign_key "tasks", "subjects"
+  add_foreign_key "user_completed_tasks", "tasks"
+  add_foreign_key "user_completed_tasks", "users"
+  add_foreign_key "user_courses", "courses"
+  add_foreign_key "user_courses", "users"
 end
