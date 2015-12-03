@@ -37,3 +37,5 @@ en:
   my_course:    "My Course"
   title:        "Framgia Training System"
   continue:     "Continue Current Course"
+  submit_report: "Submit report"
+  report_created: "Congratulation!! Your Today's Report is Created"

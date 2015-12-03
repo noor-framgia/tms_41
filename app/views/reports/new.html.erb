@@ -1,0 +1,23 @@
+<% provide(:title, t(:submit_report)) %>
+<h1><%= t :submit_report %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @report do |f| %>
+
+      <%= f.label :todays_date %> <br>
+      <%= f.date_select :todays_date, class: "form-control" %> <br>
+
+      <%= f.label :todays_task %>
+      <%= f.text_area :todays_task, class: 'form-control' %>
+
+      <%= f.label :tomorrows_task %>
+      <%= f.text_area :tomorrows_task, class: 'form-control' %>
+
+      <%= f.label :free_comment %>
+      <%= f.text_area :free_comment, class: 'form-control' %>
+
+      <%= f.submit t(:submit_report), class: "btn btn-info" %>
+    <% end %>
+  </div>
+</div>
