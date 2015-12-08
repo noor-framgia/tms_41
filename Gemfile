@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Additional gems for project features
 # NOTE: Uncomment gems on need basis
-#gem 'devise'
+gem 'devise'
 #gem 'cancancan'
 #gem 'ransack'
 #gem 'sidekiq'
