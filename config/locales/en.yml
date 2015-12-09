@@ -38,3 +38,5 @@ en:
   continue:     "Continue Current Course"
   subjects: "Subjects"
   subject_empty: "No subject has been created yet"
+  sign_in_text:  "Sign in"
+  sign_out_text: "Sign out"
