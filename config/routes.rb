@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get 'contact'=> 'static_pages#contact'
 
     namespace :supervisor do
-      resources :subjects, only: [:index, :new, :show, :edit]
+      resources :subjects
     end
   end
 

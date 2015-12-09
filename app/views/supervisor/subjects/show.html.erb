@@ -1,2 +1,85 @@
-<h1>Subjects#show</h1>
-<p>Find me in app/views/subjects/show.html.erb</p>
+<h1><%= @subject.name %></h1>
+
+<div class="row">
+  <div class="col-sm-8">
+    <%= link_to supervisor_subject_path(@subject), method: :delete, data: { confirm: (t :remove_confirmation) } do %>
+      <button type="button" class="btn btn-lg btn-danger pull-right"><%= t :delete %></button>
+    <% end %>
+    <%= link_to edit_supervisor_subject_path(@subject) do %>
+      <button type="button" class="btn btn-lg btn-default pull-right"><%= t :edit %></button>
+    <% end %>
+
+    <hr>
+
+    <p><%= @subject.description %></p>
+    <h3><%= t :appears_in %></h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th><%= t :course %></th>
+        <th><%= t :deadline %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @subject.courses.each do |course| %>
+        <tr>
+          <td>
+            <%= link_to '#' do %> <!-- supervisor_course_path(course) -->
+              <%= course.name %>
+            <% end %>
+          </td>
+          <td>NOT IMPLEMENTED YET</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <h3><%= t :trainees %></h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th><%= t :name %></th>
+        <th><%= t :email %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @subject.users.trainee.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to '#' do %> <!-- supervisor_user_path(user) -->
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <h3><%= t :supervisors %></h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th><%= t :name %></th>
+        <th><%= t :email %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @subject.users.supervisor.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to '#' do %> <!-- supervisor_user_path(user) -->
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="col-sm-1">
+    <!-- PLACEHOLDER: Progress -->
+  </div>
+</div>
