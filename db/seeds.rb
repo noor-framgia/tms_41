@@ -15,11 +15,13 @@ Subject.all.each do |s|
 end
 
 
-manazirahsan = User.create(name: 'Manazir Ahsan', role:"supervisor", email: 'manazir.bd@gmail.com', password:"password", password_confirmation:"password")
-manna = User.create(name: 'Manna', role:"trainee", email: 'manazirahsan.developer@gmail.com', password:"password", password_confirmation:"password")
-bador = User.create(name: 'Manazir Ahsan ( Manna )', role:"trainee", email: 'manazir.ahsan@framgia.com', password:"password", password_confirmation:"password")
-mahmud = User.create(name: 'Md Mahmudur Rahman', role:"supervisor", email: 'md.mahmud.rahman@gmail.com', password:"password", password_confirmation:"password")
-noor = User.create(name: 'Noor Ahmed Biswas', role:"supervisor", email: 'noor.ahmed.biswas@gmail.com', password:"password", password_confirmation:"password")
+manazirahsan = User.create(name: 'Manazir Ahsan', role:0, email: 'manazir.bd@gmail.com', password:"password", password_confirmation:"password")
+manna = User.create(name: 'Manna', role:1, email: 'manazirahsan.developer@gmail.com', password:"password", password_confirmation:"password")
+bador = User.create(name: 'Manazir Ahsan ( Manna )', role:1, email: 'manazir.ahsan@framgia.com', password:"password", password_confirmation:"password")
+mahmud = User.create(name: 'Md Mahmudur Rahman', role:0, email: 'md.mahmud.rahman@gmail.com', password:"password", password_confirmation:"password")
+noor = User.create(name: 'Noor Ahmed Biswas', role:0, email: 'noor.ahmed.biswas@gmail.com', password:"password", password_confirmation:"password")
+
+
 
 
 cse = Course.first

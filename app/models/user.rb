@@ -20,11 +20,5 @@ class User < ActiveRecord::Base
   has_many :tasks, through: :courses
 
   has_many :reports
-
-  ROLE = {
-      trainee: "Trainee",
-      supervisor: "Supervisor"
-  }
-
-  enum role: { supervisor: "Supervisor", trainee: "Trainee" }
+  enum role: [:supervisor, :trainee]
 end

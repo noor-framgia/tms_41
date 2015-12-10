@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208101250) do
+ActiveRecord::Schema.define(version: 20151210100206) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "activity_type",  limit: 255
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20151208101250) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
-    t.string   "role",                   limit: 255
+    t.integer  "role",                   limit: 4
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "email",                  limit: 255, default: "", null: false
@@ -138,6 +138,4 @@ ActiveRecord::Schema.define(version: 20151208101250) do
   add_foreign_key "tasks", "subjects"
   add_foreign_key "user_completed_tasks", "tasks"
   add_foreign_key "user_completed_tasks", "users"
-  add_foreign_key "user_courses", "courses"
-  add_foreign_key "user_courses", "users"
 end
