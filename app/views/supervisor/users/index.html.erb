@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="bg-primary"><%= t :supervisor_index_text %></h2>
+     <div>
+        <table class="table table-bordered">
+          <tr>
+            <th><%= t :name_text_supervisor %></th>
+            <th><%= t :email_text_supervisor %></th>
+            <th><%= t :action_text_supervisor %></th>
+          </tr>
+          <% @users.each do |user| %>
+              <tr>
+                <td><%= link_to user.name, supervisor_user_path(user) %></td>
+                <td><%= user.email%></td>
+                <% if current_user == user %>
+                    <td><%= link_to t(:edit_supervisor_text), edit_user_registration_path(user), class: "btn btn-primary btn-xs"  %>
+                      <%= link_to t(:delete), supervisor_user_path(user), method: :delete,
+                                  class: "btn btn-danger btn-xs", data: { confirm: t(:confirm_message_delete) } %></td>
+                <% else %>
+                    <td></td>
+                <% end %>
+              </tr>
+          <% end %>
+        </table>
+     </div>
+</div>
