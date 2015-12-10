@@ -26,4 +26,5 @@ class User < ActiveRecord::Base
       supervisor: "Supervisor"
   }
 
+  enum role: { supervisor: "Supervisor", trainee: "Trainee" }
 end
