@@ -3,6 +3,8 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.string :name
       t.text :description
+      t.datetime :start_date
+      t.datetime :end_date
       t.boolean :is_open
 
       t.timestamps null: false

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'registrations' }
+
+  devise_for :users, controllers: {registrations: "registrations"}
 
   scope "(:locale)", :locale => /en/ do
     root	'static_pages#home'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
     namespace :supervisor do
       resources :subjects
       resources :users, only: [:index, :show, :destroy]
+      resources :courses, only: [:index, :new, :create, :show, :edit]
     end
   end
 

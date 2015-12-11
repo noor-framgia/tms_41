@@ -60,3 +60,12 @@ en:
   supervisor_index_text: "All Supervisors"
   supervisor_details_text: "Supervisor details"
   supervisor_others_info_text: "Others information"
+  submit_report: "Submit report"
+  report_created: "Congratulation!! Your Today's Report is Created"
+  course_created: "New Course Created"
+  new_course:     "New Course"
+  add_new_course: "Add new Course"
+  select_subjects: "Select Subject"
+  subject:         "Subject"
+  select:           "Select"
+
