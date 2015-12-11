@@ -9,7 +9,7 @@
       </tr>
       <% @users.each do |user| %>
         <tr>
-          <td><%= link_to user.name, "#" %></td>
+          <td><%= link_to user.name, trainee_user_path(user) %></td>
           <td><%= user.email%></td>
             <% if current_user.supervisor? || current_user == user %>
           <td><%= link_to t(:edit_supervisor_text), edit_user_registration_path(user), class: "btn btn-primary btn-xs"  %>
