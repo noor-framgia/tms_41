@@ -68,4 +68,6 @@ en:
   select_subjects: "Select Subject"
   subject:         "Subject"
   select:           "Select"
+  course_update: "Course Updated"
+  update_course: "Update Course"
 
