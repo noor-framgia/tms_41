@@ -9,11 +9,20 @@ class Supervisor::CoursesController < ApplicationController
   end
 
   def update
-    if @course.update_attributes course_params
-      flash[:success] = t :course_update
-      redirect_to [:supervisor, @course]
+    if params[:type] == "close"
+      if @course.update_attributes status: Course.statuses[:close]
+        flash[:success] = t :course_closed
+        redirect_to [:supervisor, @course]
+      else
+        render :edit
+      end
     else
-      render :edit
+      if @course.update_attributes course_params
+        flash[:success] = t :course_update
+        redirect_to [:supervisor, @course]
+      else
+        render :edit
+      end
     end
   end
 
@@ -26,7 +35,7 @@ class Supervisor::CoursesController < ApplicationController
     @course = Course.new course_params
     if @course.save
       flash[:success] = t (:course_created)
-      render :index
+      redirect_to supervisor_courses_url
     else
       redirect_to new_supervisor_course_url
     end
@@ -36,8 +45,13 @@ class Supervisor::CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
-  private
+  def destroy
+    @course.destroy
+    flash[:success] = t :course_delete
+    redirect_to supervisor_courses_path
+  end
 
+  private
   def course_params
     params.require(:course).permit(:name, :description, :start_date, :end_date, subject_ids: [] )
   end
