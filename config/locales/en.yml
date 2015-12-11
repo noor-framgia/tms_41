@@ -70,4 +70,5 @@ en:
   select:           "Select"
   course_update: "Course Updated"
   update_course: "Update Course"
-
+  trainee_index_text: "All Supervisors"
+  success_message_delete_trainee: "Trainee deleted successfully"
