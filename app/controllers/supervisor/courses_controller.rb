@@ -1,7 +1,8 @@
 class Supervisor::CoursesController < ApplicationController
-  before_action :load_course
+  before_action :load_course, except: [:index, :new, :create]
 
   def index
+    @courses = Course.all
   end
 
   def edit
@@ -44,4 +45,5 @@ class Supervisor::CoursesController < ApplicationController
   def load_course
     @course = Course.find params[:id]
   end
+
 end
