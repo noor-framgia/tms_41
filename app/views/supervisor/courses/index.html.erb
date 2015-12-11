@@ -1,1 +1,31 @@
-<h1>index here</h1>
+<% provide :title, t(:all_course)%>
+<div class="center">
+  <h1><%= t :all_course %></h1><br/>
+</div>
+
+<table class="table table-bordered table-striped">
+
+  <thead>
+  <tr>
+    <th><%= t (:course_name) %></th>
+    <th><%= t (:course_description) %></th>
+    <th><%= t (:course_start_date) %></th>
+    <th><%= t (:course_end_date) %></th>
+    <th><%= t (:course_status) %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= link_to course.name, [:supervisor, course]  %></td>
+      <td><%= course.description.truncate 50 %></td>
+      <td><%= course.start_date %></td>
+      <td><%= course.end_date %></td>
+      <td><%= course.is_open %></td>
+    </tr>
+  </tbody>
+
+  <% end %>
+
+</table>

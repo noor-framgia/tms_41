@@ -1,2 +1,52 @@
-<h1>Supervisor::Courses#show</h1>
-<p>Find me in app/views/supervisor/courses/show.html.erb</p>
+<% provide :title, @course.name %>
+<div class="center">
+  <h1><%= t(:course_detail) %></h1>
+</div>
+
+<div class="row">
+  <div class="panel panel-default panel-box">
+    <div class="panel-heading panel-size-margin"><%= @course.name %>
+      <div class="pull-right">
+        <%= link_to t(:view_all), supervisor_courses_path, class: "btn btn-primary" %>
+        <%= link_to t(:edit), edit_supervisor_course_path(@course), class: "btn btn-warning" %>
+        <%= link_to t(:delete), "#" , class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+    <strong>
+      <p><%= t (:start_date)%> <%= @course.start_date %></p>
+      <p><%= t (:end_date)%> <%= @course.end_date %></p>
+    </strong>
+  </div>
+
+  <div class="center bottom-aligned-row banner"><br/>
+    <% if @course.is_open? %>
+      <%= link_to t(:assign_supervisor), "#", class: "btn btn-warning" %>
+      <%= link_to t(:assign_trainee), "#", class: "btn btn-warning" %>
+    <% end %>
+  </div>
+
+  <div class="panel panel-default panel-box">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th><%= t (:subject_name) %></th>
+        <th><%= t (:subject_description) %></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @course.subjects.each do |subject| %>
+        <tr>
+          <td><%= link_to subject.name, [:supervisor, subject]  %></td>
+          <td><%= subject.description.truncate 50 %></td>
+        </tr>
+        </tbody>
+
+      <% end %>
+
+      </table>
+  </div>
+</div>
