@@ -13,6 +13,9 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show, :destroy]
       resources :courses, only: [:index, :new, :create, :show, :edit, :update]
     end
+    namespace :trainee do
+      resources :users, only: [:index, :show, :destroy]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
