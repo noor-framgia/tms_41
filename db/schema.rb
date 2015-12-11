@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210100206) do
+ActiveRecord::Schema.define(version: 20151211100055) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "activity_type",  limit: 255
@@ -42,34 +42,10 @@ ActiveRecord::Schema.define(version: 20151210100206) do
     t.text     "description", limit: 65535
     t.datetime "start_date"
     t.datetime "end_date"
-    t.boolean  "is_open"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "status",      limit: 4,     default: 0
   end
-
-  create_table "current_course_subject_tasks", force: :cascade do |t|
-    t.integer  "course_id",  limit: 4
-    t.integer  "subject_id", limit: 4
-    t.integer  "task_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "current_course_subject_tasks", ["course_id"], name: "index_current_course_subject_tasks_on_course_id", using: :btree
-  add_index "current_course_subject_tasks", ["subject_id"], name: "index_current_course_subject_tasks_on_subject_id", using: :btree
-  add_index "current_course_subject_tasks", ["task_id"], name: "index_current_course_subject_tasks_on_task_id", using: :btree
-
-  create_table "reports", force: :cascade do |t|
-    t.integer  "user_id",        limit: 4
-    t.date     "todays_date"
-    t.text     "todays_task",    limit: 65535
-    t.text     "tomorrows_task", limit: 65535
-    t.text     "free_comment",   limit: 65535
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-  add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
 
   create_table "subjects", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -88,15 +64,15 @@ ActiveRecord::Schema.define(version: 20151210100206) do
 
   add_index "tasks", ["subject_id"], name: "index_tasks_on_subject_id", using: :btree
 
-  create_table "user_completed_tasks", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "task_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+  create_table "user_course_subjects", force: :cascade do |t|
+    t.integer  "user_course_id",  limit: 4
+    t.integer  "user_subject_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  add_index "user_completed_tasks", ["task_id"], name: "index_user_completed_tasks_on_task_id", using: :btree
-  add_index "user_completed_tasks", ["user_id"], name: "index_user_completed_tasks_on_user_id", using: :btree
+  add_index "user_course_subjects", ["user_course_id"], name: "index_user_course_subjects_on_user_course_id", using: :btree
+  add_index "user_course_subjects", ["user_subject_id"], name: "index_user_course_subjects_on_user_subject_id", using: :btree
 
   create_table "user_courses", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -109,6 +85,36 @@ ActiveRecord::Schema.define(version: 20151210100206) do
 
   add_index "user_courses", ["course_id"], name: "index_user_courses_on_course_id", using: :btree
   add_index "user_courses", ["user_id"], name: "index_user_courses_on_user_id", using: :btree
+
+  create_table "user_subject_tasks", force: :cascade do |t|
+    t.integer  "user_subject_id", limit: 4
+    t.integer  "user_task_id",    limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "user_subject_tasks", ["user_subject_id"], name: "index_user_subject_tasks_on_user_subject_id", using: :btree
+  add_index "user_subject_tasks", ["user_task_id"], name: "index_user_subject_tasks_on_user_task_id", using: :btree
+
+  create_table "user_subjects", force: :cascade do |t|
+    t.integer  "user_id",           limit: 4
+    t.integer  "course_subject_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "user_subjects", ["course_subject_id"], name: "index_user_subjects_on_course_subject_id", using: :btree
+  add_index "user_subjects", ["user_id"], name: "index_user_subjects_on_user_id", using: :btree
+
+  create_table "user_tasks", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "task_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "user_tasks", ["task_id"], name: "index_user_tasks_on_task_id", using: :btree
+  add_index "user_tasks", ["user_id"], name: "index_user_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -133,11 +139,13 @@ ActiveRecord::Schema.define(version: 20151210100206) do
   add_foreign_key "activities", "users"
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "course_subjects", "subjects"
-  add_foreign_key "current_course_subject_tasks", "courses"
-  add_foreign_key "current_course_subject_tasks", "subjects"
-  add_foreign_key "current_course_subject_tasks", "tasks"
-  add_foreign_key "reports", "users"
   add_foreign_key "tasks", "subjects"
-  add_foreign_key "user_completed_tasks", "tasks"
-  add_foreign_key "user_completed_tasks", "users"
+  add_foreign_key "user_course_subjects", "user_courses"
+  add_foreign_key "user_course_subjects", "user_subjects"
+  add_foreign_key "user_subject_tasks", "user_subjects"
+  add_foreign_key "user_subject_tasks", "user_tasks"
+  add_foreign_key "user_subjects", "course_subjects"
+  add_foreign_key "user_subjects", "users"
+  add_foreign_key "user_tasks", "tasks"
+  add_foreign_key "user_tasks", "users"
 end

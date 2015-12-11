@@ -5,9 +5,9 @@ Subject.create(name: 'OOPL', description: 'Object oriented programming langualge
 Subject.create(name: 'Network Security', description: 'Responsible for secure communication and storage', tasks_attributes: [{name: 'DES', description: 'Data Encryption Standard'}, {name: 'AES', description: 'Advanced Encryption Standard not based on fiestal network'}, {name: 'Hash', description: 'Sha1, Sha2, MD5'}, {name: 'Public key encryption', description: 'Public key and private key based secure comminication'}, {name: 'Digital signature', description: 'Dont protect data but verify the authenticity'}, {name: 'Symetric key base encryption', description: 'Both sender and receiver share the same key: DES, AES'}])
 
 
-cse = Course.create(name: 'CSE', description: 'Money making job will be available', is_open: true)
-Course.create(name: 'EEE', description: 'NOw it is back to its original position', is_open: true)
-Course.create(name: 'Physics', description: 'Working to find out rules of nature', is_open: true)
+cse = Course.create(name: 'CSE', description: 'Money making job will be available')
+Course.create(name: 'EEE', description: 'NOw it is back to its original position')
+Course.create(name: 'Physics', description: 'Working to find out rules of nature')
 
 
 Subject.all.each do |s|
@@ -30,10 +30,3 @@ cse.user_courses.create(user: manna)
 cse.user_courses.create(user: bador)
 cse.user_courses.create(user: mahmud)
 cse.user_courses.create(user: noor)
-
-
-cse.subjects.each do |s|
-  s.tasks.each do |t|
-    CurrentCourseSubjectTask.create(course: cse, subject: s, task: t)
-  end
-end
