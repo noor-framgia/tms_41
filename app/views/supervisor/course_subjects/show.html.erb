@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+      <% @course.subjects.each do |subject| %>
+        <strong><%= subject.name %><br/></strong>
+          <div>
+            <% subject.tasks.each do |task| %>
+              <%= task.name %><br/>
+            <% end %>
+          </div>
+      <% end %>
+
+    <%= link_to t(:back), supervisor_course_path %>
+  </div>
+</div>

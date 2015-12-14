@@ -1,0 +1,30 @@
+<% provide :title, t(:update_course)%>
+<div class="center">
+  <h1><%= t(:manipulate_task) %></h1>
+</div>
+
+<div class="row">
+  <div class="panel panel-default panel-box">
+    <div class="panel-heading panel-size-margin">
+      <%= @course.name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= form_for @course_subject, :url => {controller: :course_subjects, action: :create}, method: :patch do %>
+        <%= hidden_field_tag :course_id, @course.id %>
+        <% for subject in @course.subjects do %>
+          <%= subject.name %>
+          <%= check_box_tag "subject_ids[]", subject.id %><br/>
+          <% for task in subject.tasks do %>
+            <%= task.name %>
+            <%= check_box_tag "task_ids[]", task.id  %><br/>
+          <% end %>
+        <% end %>
+
+        <%= submit_tag t(:manipulate_task), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
