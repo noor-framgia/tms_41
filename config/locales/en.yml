@@ -104,3 +104,4 @@ en:
   subject_update_failure: "Subject could not be updated!"
   subject_removal_success: "Subject has been deleted successfully"
   subject_removal_failure: "Subject couldn't be deleted! Maybe it's locked."
+  cancancan_access_denied_text: "Access denied"

@@ -1,7 +1,7 @@
 class Supervisor::SubjectsController < ApplicationController
   before_action :load_user, only: [:index]
   before_action :load_subject, only: [:show, :edit, :update, :destroy]
-
+  authorize_resource
   def index
     @subjects = @user.subjects
   end
