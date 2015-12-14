@@ -11,16 +11,18 @@ Please remove before: last pull request
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Tahmid Shakil:
+
 	> Incompatibility 1
 		> Requires: session implementation
 		> File: subject_controllers.rb
 		> Method: load_user
 		> Modification: Replace User.first with current_user
 
-		> Incompatibility 2
-			> Requires: db course attribute "deadline"
-			> File: supervisor/subjects/show.html.erb
-			> Modification:
-				> Replace "NOT IMPLEMENTED YET" with current_user
-				> Replace '#' links with paths in corresponding comment block
+	> Incompatibility 2
+		> Requires: db course attribute "deadline"
+		> File: supervisor/subjects/show.html.erb
+		> Modification:
+			> Replace "NOT IMPLEMENTED YET" with current_user
+			> Replace '#' links with paths in corresponding comment block
+			
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

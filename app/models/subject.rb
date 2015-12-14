@@ -3,7 +3,11 @@ class Subject < ActiveRecord::Base
   has_many :courses, through: :course_subjects, autosave: true
   has_many :users, through: :courses
 
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
-  accepts_nested_attributes_for :tasks
+  accepts_nested_attributes_for :tasks,
+    reject_if:
+      proc { |attributes| attributes["name"].blank? },allow_destroy: true
+
+  validates :name, presence: true
 end

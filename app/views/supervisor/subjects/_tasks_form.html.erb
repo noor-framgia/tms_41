@@ -1,0 +1,9 @@
+<div class="jumbotron">
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+
+  <%= link_to_remove_fields t(:remove), f %>
+</div>
