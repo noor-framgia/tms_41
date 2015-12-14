@@ -7,9 +7,16 @@
   <div class="panel panel-default panel-box">
     <div class="panel-heading panel-size-margin"><%= @course.name %>
       <div class="pull-right">
-        <%= link_to t(:view_all), supervisor_courses_path, class: "btn btn-primary" %>
+        <%= link_to t(:all_course), supervisor_courses_path, class: "btn btn-primary" %>
         <%= link_to t(:edit), edit_supervisor_course_path(@course), class: "btn btn-warning" %>
-        <%= link_to t(:delete), "#" , class: "btn btn-danger" %>
+        <% unless @course.close? || @course.continue? %>
+          <%= link_to t(:close), supervisor_course_path(@course, type: "close"), method: :patch,
+                      data: {confirm: t(:confirm_message_close)}, class: "btn btn-warning" %>
+        <% end %>
+        <% if @course.close? %>
+          <%= link_to t(:delete_course), [:supervisor, @course], method: :delete,
+                    class: "btn btn-danger", data: { confirm: t(:confirm) } %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -22,7 +29,7 @@
   </div>
 
   <div class="center bottom-aligned-row banner"><br/>
-    <% if @course.is_open? %>
+    <% if @course.open? %>
       <%= link_to t(:assign_supervisor), "#", class: "btn btn-warning" %>
       <%= link_to t(:assign_trainee), "#", class: "btn btn-warning" %>
     <% end %>
