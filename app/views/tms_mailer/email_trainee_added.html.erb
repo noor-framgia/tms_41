@@ -1,0 +1,5 @@
+<h4><%= t :greeting, :user_name => @user.name %></h4>
+<%= t :inclusion_to_course_text, :course_name => @course.name %>
+<%= t :login_instruction_text %> <%= url_for(controller: "static_pages",
+                                              action: "home",
+                                              only_path: false) %>
