@@ -5,9 +5,9 @@ Subject.create(name: 'OOPL', description: 'Object oriented programming langualge
 Subject.create(name: 'Network Security', description: 'Responsible for secure communication and storage', tasks_attributes: [{name: 'DES', description: 'Data Encryption Standard'}, {name: 'AES', description: 'Advanced Encryption Standard not based on fiestal network'}, {name: 'Hash', description: 'Sha1, Sha2, MD5'}, {name: 'Public key encryption', description: 'Public key and private key based secure comminication'}, {name: 'Digital signature', description: 'Dont protect data but verify the authenticity'}, {name: 'Symetric key base encryption', description: 'Both sender and receiver share the same key: DES, AES'}])
 
 
-cse = Course.create(name: 'CSE', description: 'Money making job will be available')
-Course.create(name: 'EEE', description: 'NOw it is back to its original position')
-Course.create(name: 'Physics', description: 'Working to find out rules of nature')
+cse = Course.create(name: "CSE", description: "Money making job will be available", start_date: DateTime.strptime("09/14/2015 8:00", "%m/%d/%Y %H:%M"), end_date: DateTime.strptime("09/20/2015 8:00", "%m/%d/%Y %H:%M"))
+Course.create(name: "EEE", description: "Now it is back to its original position", start_date: DateTime.strptime("09/14/2015 8:00", "%m/%d/%Y %H:%M"), end_date: DateTime.strptime("09/20/2015 8:00", "%m/%d/%Y %H:%M"))
+Course.create(name: "Physics", description: "Working to find out rules of nature", start_date: DateTime.strptime("09/14/2015 8:00", "%m/%d/%Y %H:%M"), end_date: DateTime.strptime("09/20/2015 8:00", "%m/%d/%Y %H:%M"))
 
 
 Subject.all.each do |s|
@@ -22,11 +22,10 @@ mahmud = User.create(name: 'Md Mahmudur Rahman', role:0, email: 'md.mahmud.rahma
 noor = User.create(name: 'Noor Ahmed Biswas', role:0, email: 'noor.ahmed.biswas@gmail.com', password:"password", password_confirmation:"password")
 
 
+cse.users = [manazirahsan, manna, bador, mahmud, noor]
 
+# Custom course tasks population
+CourseSubject.first.tasks = CourseSubject.first.subject.tasks
 
-cse = Course.first
-cse.user_courses.create(user: manazirahsan)
-cse.user_courses.create(user: manna)
-cse.user_courses.create(user: bador)
-cse.user_courses.create(user: mahmud)
-cse.user_courses.create(user: noor)
+# UserTask population
+User.first.tasks=User.first.course_subjects.first.tasks
