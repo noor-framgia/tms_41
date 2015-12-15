@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211100055) do
+ActiveRecord::Schema.define(version: 20151215093412) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "activity_type",  limit: 255
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20151211100055) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
-    t.integer  "role",                   limit: 4
+    t.integer  "role",                   limit: 4,   default: 1
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "email",                  limit: 255, default: "", null: false
@@ -131,10 +131,14 @@ ActiveRecord::Schema.define(version: 20151211100055) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["provider"], name: "index_users_on_provider", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
   add_foreign_key "activities", "users"
   add_foreign_key "course_subjects", "courses"
