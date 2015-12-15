@@ -1,5 +1,6 @@
 class Supervisor::CoursesController < ApplicationController
   before_action :load_course, except: [:index, :new, :create]
+  authorize_resource
 
   def index
     @courses = Course.all
