@@ -20,6 +20,10 @@ gem "coffee-rails", "~> 4.1.0"
 # NOTE: Uncomment gems on need basis
 gem "devise"
 gem "cancancan", "~> 1.10"
+gem "omniauth"
+gem "omniauth-twitter"
+gem "omniauth-facebook"
+gem "figaro"
 #gem 'ransack'
 #gem 'sidekiq'
 #gem 'resque'

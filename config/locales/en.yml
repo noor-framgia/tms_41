@@ -105,3 +105,4 @@ en:
   subject_removal_success: "Subject has been deleted successfully"
   subject_removal_failure: "Subject couldn't be deleted! Maybe it's locked."
   cancancan_access_denied_text: "Access denied"
+  signed_in_message: "Signed in"
