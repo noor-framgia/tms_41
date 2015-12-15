@@ -99,3 +99,8 @@ en:
   confirm_message_close: "Are you sure to Close this Course?"
   close: "Close"
   course_closed: "Course is Closed"
+  edit_subject: "Edit subject"
+  subject_update_success: "Subject has been updated successfully!"
+  subject_update_failure: "Subject could not be updated!"
+  subject_removal_success: "Subject has been deleted successfully"
+  subject_removal_failure: "Subject couldn't be deleted! Maybe it's locked."
