@@ -1,0 +1,42 @@
+<% provide :title, t(:enrollment) %>
+<h1><%= t(:enrollment) %></h1>
+<h3><%= t(:course) %>: <%= @course.name %></h3> <br/>
+
+<%= form_for @course, url: supervisor_users_course_path(@course) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home"><%= t(:supervisor) %></a></li>
+    <li><a data-toggle="tab" href="#menu1"><%= t(:trainee) %></a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <table class="table">
+        <tbody>
+          <%= collection_check_boxes :course, :user_ids, User.supervisors, :id, :name do |added_supervisor| %>
+            <%= added_supervisor.label class:"label-checkbox" do%>
+              <%= added_supervisor.check_box + added_supervisor.text %>
+            <%end%>
+            <br>
+          <% end %>
+        <tbody>
+      </table>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <table class="table">
+        <tbody>
+          <%= collection_check_boxes :course, :user_ids, User.trainees, :id, :name do |added_trainee| %>
+            <%= added_trainee.label class:"label-checkbox" do %>
+              <%= added_trainee.check_box + added_trainee.text %>
+            <%end%>
+            <br>
+          <% end %>
+        <tbody>
+      </table>
+    </div>
+  </div>
+
+  <%= f.submit t(:enrollment), class: "btn btn-primary" %>
+
+<% end %>

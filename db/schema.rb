@@ -92,9 +92,9 @@ ActiveRecord::Schema.define(version: 20151216054041) do
     t.integer  "user_id",      limit: 4
     t.integer  "course_id",    limit: 4
     t.datetime "deadline"
-    t.boolean  "is_completed"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "is_completed",           default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "user_courses", ["course_id"], name: "index_user_courses_on_course_id", using: :btree

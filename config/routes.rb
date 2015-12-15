@@ -12,10 +12,14 @@ Rails.application.routes.draw do
     namespace :supervisor do
       resources :subjects
       resources :users, only: [:index, :show, :destroy]
-      resources :courses #, shallow: true do
+      resources :courses do
+        resource :assign_trainee
+        resource :assign_supervisor
+      end
       resources :course_subjects
-      # end
+      resources :users_courses
     end
+
     namespace :trainee do
       resources :users, only: [:index, :show, :destroy]
     end

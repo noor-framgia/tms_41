@@ -1,10 +1,11 @@
 class UserCourse < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
-
   before_create :populate_user_subject
   before_update :update_user_subject
   before_destroy :destroy_user_subject
+  belongs_to :trainees, -> {trainees}, class_name: "User", foreign_key: "user_id"
+  belongs_to :supervisors, -> {supervisors}, class_name: "User", foreign_key: "user_id"
 
   private
   def populate_user_subject
@@ -24,6 +25,12 @@ class UserCourse < ActiveRecord::Base
       user_subject.destroy
     end
   end
+
   include PublicActivity::Model
   tracked except: [:destroy, :create], owner: ->(controller, model) {controller && controller.current_user}
+  tracked owner: ->(controller, model) {controller && controller.current_user}
+
+  validates :course_id, uniqueness: {scope: :user_id}
+
+  scope :has_user, -> user {find_by user_id: user.id}
 end
