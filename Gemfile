@@ -28,6 +28,7 @@ gem "sidekiq"
 gem "sinatra", require: false
 gem "slim"
 gem "redis"
+gem "public_activity", "~> 1.4.0"
 #gem 'ransack'
 #gem 'resque'
 #gem 'whenever', :require => false

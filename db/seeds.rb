@@ -1,3 +1,4 @@
+PublicActivity.enabled = false
 Subject.create(name: 'Algorithm', description: 'Heart of computer science, We read book of Core Man.', tasks_attributes: [{name: 'Computation complexity', description: 'Analysis of performance of an algorithm'}, {name: 'Greeedy algorithm', description: 'Algorithm finding the best things first'}, {name: 'Divide and conquare', description: 'Solving problem breaking it into smaller part'}, {name: 'Searching algorithm', description: 'Binary search'}, {name: 'Sorting algorithm', description: 'Bubble, quick, merge, insertion, selection, heap sort'}])
 
 Subject.create(name: 'OOPL', description: 'Object oriented programming langualge: C++, Java, C#', tasks_attributes: [{name: 'Control structure', description: 'Loop, conditions'}, {name: 'Memory management', description: 'pointer, struct, linked list'}, {name: 'Collection', description: 'List, map, set'}, {name: 'Project', description: 'Project based on networking'}])

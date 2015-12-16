@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include PublicActivity::StoreController
   include CanCan::ControllerAdditions
   protect_from_forgery with: :exception
   before_action :set_locale

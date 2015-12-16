@@ -127,3 +127,6 @@ en:
   task_table_header_name: "Task Name"
   manipulate_task: "Modify Task"
   back: "Back"
+  activity_text: "Activity"
+  created_text: "created"
+  at_text: "at"

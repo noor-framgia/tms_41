@@ -1,7 +1,6 @@
 <h1><%= t :subjects %></h1>
-
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-7 col-sm-offset-0">
     <% if !(@subjects.empty?) %>
     <% @subjects.each do |subject| %>
       <div class="jumbotron">
@@ -17,7 +16,12 @@
       </div>
     <% end %>
   </div>
-  <div class="col-sm-1">
-    <!-- PLACEHOLDER: Progress -->
+  <div class=".col-sm-5 pull-right">
+    <div class="panel panel-default pull-right">
+      <div class="panel-heading"><%= t :activity_text %></div>
+      <div class="panel-body">
+        <%= render "shared/activity" %>
+      </div>
+    </div>
   </div>
 </div>
