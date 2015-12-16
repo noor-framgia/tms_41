@@ -123,3 +123,6 @@ en:
   activity_log: "Activity log"
   task_update_success: "Tasks has been updated successfully"
   task_update_failure: "Task update failed"
+  deadline_of_a_course: "Deadline of %{course_name} is %{course_deadline}"
+  trainee_completed_tasks: "%{trainee_name} completed the following task(s) today:"
+  task_table_header_name: "Task Name"

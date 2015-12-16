@@ -1,1 +1,5 @@
-This is a place holder for the supervisors and the trainees about deadline of their courses.
+<h4><%= t :greeting, user_name: @user.name %></h4>
+<%= t :deadline_of_a_course, course_name: @course.name, course_deadline: @course.end_date %>
+<%= t :login_instruction_text %> <%= url_for(controller: "static_pages",
+                                             action: "home",
+                                             only_path: false) %>

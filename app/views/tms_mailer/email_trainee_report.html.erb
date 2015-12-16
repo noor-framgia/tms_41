@@ -1,1 +1,23 @@
-Some custom message will be sent to supervisor about trainee's report
+<h4><%= t :greeting, user_name: @user.name %></h4>
+<%= t :trainee_completed_tasks, trainee_name: @user.name %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-border table-striped">
+      <thead>
+      <tr>
+        <td><%= t :task_table_header_name %></td>
+      </tr>
+      </thead>
+        <% @tasks.each do |task| %>
+          <tbody>
+          <tr>
+            <td><%= task.name %></td>
+          </tr>
+          </tbody>
+        <% end %>
+    </table>
+  </div>
+</div>
+<%= t :login_instruction_text %> <%= url_for(controller: "static_pages",
+                                             action: "home",
+                                             only_path: false) %>

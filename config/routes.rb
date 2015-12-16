@@ -1,3 +1,4 @@
+require "sidekiq/web"
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks:"omniauth_callbacks"}
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
+  mount Sidekiq::Web, at: "/sidekiq"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -24,8 +24,11 @@ gem "omniauth"
 gem "omniauth-twitter"
 gem "omniauth-facebook"
 gem "figaro"
+gem "sidekiq"
+gem "sinatra", require: false
+gem "slim"
+gem "redis"
 #gem 'ransack'
-#gem 'sidekiq'
 #gem 'resque'
 #gem 'whenever', :require => false
 #gem 'delayed_job_active_record'

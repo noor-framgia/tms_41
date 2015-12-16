@@ -1,4 +1,7 @@
 class Course < ActiveRecord::Base
+  scope :courses_to_be_sent_deadline, -> {where "created_at > :within_two_weeks",
+    within_two_weeks: Time.now - 14.days}
+
   has_many :user_courses, dependent: :destroy
   has_many :users, through: :user_courses
 
