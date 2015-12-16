@@ -27,11 +27,22 @@ ActiveRecord::Schema.define(version: 20151215093412) do
 
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
+  create_table "course_subject_tasks", force: :cascade do |t|
+    t.integer  "course_subject_id", limit: 4
+    t.integer  "task_id",           limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "course_subject_tasks", ["course_subject_id"], name: "index_course_subject_tasks_on_course_subject_id", using: :btree
+  add_index "course_subject_tasks", ["task_id"], name: "index_course_subject_tasks_on_task_id", using: :btree
+
   create_table "course_subjects", force: :cascade do |t|
     t.integer  "course_id",  limit: 4
     t.integer  "subject_id", limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "status",     limit: 4, default: 0
   end
 
   add_index "course_subjects", ["course_id"], name: "index_course_subjects_on_course_id", using: :btree
@@ -99,8 +110,9 @@ ActiveRecord::Schema.define(version: 20151215093412) do
   create_table "user_subjects", force: :cascade do |t|
     t.integer  "user_id",           limit: 4
     t.integer  "course_subject_id", limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "status",            limit: 4, default: 0
   end
 
   add_index "user_subjects", ["course_subject_id"], name: "index_user_subjects_on_course_subject_id", using: :btree
@@ -141,6 +153,8 @@ ActiveRecord::Schema.define(version: 20151215093412) do
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
   add_foreign_key "activities", "users"
+  add_foreign_key "course_subject_tasks", "course_subjects"
+  add_foreign_key "course_subject_tasks", "tasks"
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "course_subjects", "subjects"
   add_foreign_key "tasks", "subjects"
