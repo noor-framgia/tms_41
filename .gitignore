@@ -27,3 +27,4 @@ config/environments/*.local.yml
 Gemfile.lock
 # Ignore application configuration
 /config/application.yml
+/config/environment_variables.yml
