@@ -29,8 +29,8 @@ cse.users = [manazirahsan, manna, bador, mahmud, noor]
 CourseSubject.first.tasks = CourseSubject.first.subject.tasks
 
 # UserTask population
-User.first.tasks=User.first.course_subjects.first.tasks
-UserTask.create! user_id:3, task_id:7
-UserTask.create! user_id:3, task_id:8
-UserTask.create! user_id:3, task_id:9
-UserTask.create! user_id:3, task_id:10
+User.first.user_subjects.first.tasks=User.first.course_subjects.first.tasks[0..-3]
+# UserTask.create! user_id:3, task_id:7
+# UserTask.create! user_id:3, task_id:8
+# UserTask.create! user_id:3, task_id:9
+# UserTask.create! user_id:3, task_id:10
