@@ -23,6 +23,8 @@ class Supervisor::SubjectsController < ApplicationController
   end
 
   def show
+    @subject_activities_create =@subject_activities = PublicActivity::Activity.order("created_at desc").
+      where(key:["subject.create","subject.update"], trackable_id: @subject.id)
   end
 
   def edit
