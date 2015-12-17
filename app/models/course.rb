@@ -9,4 +9,6 @@ class Course < ActiveRecord::Base
   has_many :subjects, through: :course_subjects, autosave: true
 
   enum status: [:open, :continue, :close]
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) {controller && controller.current_user}
 end

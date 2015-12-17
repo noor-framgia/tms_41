@@ -1,0 +1,5 @@
+<% @activities.each do |activity| %>
+  <%= link_to activity.owner.name, supervisor_user_path(activity.owner) if activity.owner %>
+    <%= t :created_text %> <%= link_to activity.trackable.name, supervisor_subject_path(activity.trackable) if activity.trackable %>
+      <%= t :at_text %>&nbsp<%= activity.created_at.to_s[0..-4] if activity.created_at %><br>
+<% end %>

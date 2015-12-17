@@ -64,4 +64,6 @@ class User < ActiveRecord::Base
       super
     end
   end
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) {controller && controller.current_user}
 end

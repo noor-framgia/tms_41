@@ -24,4 +24,6 @@ class UserCourse < ActiveRecord::Base
       user_subject.destroy
     end
   end
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) {controller && controller.current_user}
 end

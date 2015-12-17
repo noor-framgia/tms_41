@@ -11,4 +11,7 @@ class Subject < ActiveRecord::Base
         allow_destroy: true
 
   validates :name, presence: true
+
+  include PublicActivity::Model
+  tracked except: :destroy, owner: ->(controller, model) {controller && controller.current_user}
 end

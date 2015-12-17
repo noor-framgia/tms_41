@@ -1,5 +1,6 @@
 class Supervisor::SubjectsController < ApplicationController
   before_action :load_user, only: [:index]
+  before_action :load_activities, only: [:index]
   before_action :load_subject, only: [:show, :edit, :update, :destroy]
   authorize_resource
   def index
@@ -57,7 +58,11 @@ class Supervisor::SubjectsController < ApplicationController
   end
 
   def subject_params
-    params.require(:subject).permit(:name, :description, tasks_attributes:
-      [:id, :name, :description, :_destroy])
+    params.require(:subject).permit :name, :description, tasks_attributes:
+      [:id, :name, :description, :_destroy]
+  end
+
+  def load_activities
+    @activities = PublicActivity::Activity.my_activity "subject.create"
   end
 end
