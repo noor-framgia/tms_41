@@ -9,6 +9,8 @@ class Trainee::UsersController < ApplicationController
   end
 
   def show
+    @trainee_task_activities_create = PublicActivity::Activity.order("created_at desc").
+      where(key:["user_task.create"], owner_id: current_user.id)
   end
 
   def edit
