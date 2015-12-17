@@ -29,14 +29,13 @@ gem "sinatra", require: false
 gem "slim"
 gem "redis"
 gem "public_activity", "~> 1.4.0"
+gem "whenever", require: false
 #gem 'ransack'
 #gem 'resque'
-#gem 'whenever', :require => false
 #gem 'delayed_job_active_record'
 #gem 'rspec'
 #gem 'social-share-button'
 #gem "paranoia", "~> 2.0"
-#gem 'public_activity'
 
 gem "bcrypt",                  "3.1.7"
 #gem 'faker',                   '1.4.2'
