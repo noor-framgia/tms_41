@@ -3,7 +3,7 @@ class ReportEmailer
 
   def perform
     User.all.each do |user|
-      TMSMailer.email_trainee_report(user.id).deliver
+      TmsMailer.email_trainee_report(user.id).deliver_now
     end
   end
 end
