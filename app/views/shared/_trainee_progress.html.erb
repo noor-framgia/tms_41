@@ -1,0 +1,12 @@
+<div class="well">
+  <h4>
+    <%= t :course_completed_text %>(<%= course_completed_percentage %>%)
+  </h4>
+  <div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar"
+      aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+      style="width:<%= course_completed_percentage %>%">
+      <%= course_completed_percentage %> <%= t :completed_text_progress%>
+    </div>
+  </div>
+</div>

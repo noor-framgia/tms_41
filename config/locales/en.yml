@@ -138,3 +138,5 @@ en:
   enrollment: "Enrollment"
   trainee:  "Trainee"
   supervisor: "Supervisor"
+  completed_text_progress: "% completed"
+  course_completed_text: "Course completed"
