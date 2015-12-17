@@ -129,4 +129,6 @@ en:
   back: "Back"
   activity_text: "Activity"
   created_text: "created"
+  updated_text: "updated"
   at_text: "at"
+  not_impleted_votice: "NOT IMPLEMENTED YET"
