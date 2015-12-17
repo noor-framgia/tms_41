@@ -1,0 +1,8 @@
+<% if @trainee_task_activities_create.any? %>
+  <% @trainee_task_activities_create.each do |activity| %>
+    <%= link_to activity.owner.name, trainee_user_path(activity.owner) if activity.owner %>
+    <%= t :completed_text %> <%= activity.trackable.task.name if activity.trackable %>
+    <%= t :at_text %>&nbsp<%= activity.created_at.to_s[0..-4] if activity.created_at %></br>
+  <% end %>
+<% end %>
+

@@ -1,4 +1,4 @@
-PublicActivity.enabled = false
+# PublicActivity.enabled = false
 Subject.create(name: 'Algorithm', description: 'Heart of computer science, We read book of Core Man.', tasks_attributes: [{name: 'Computation complexity', description: 'Analysis of performance of an algorithm'}, {name: 'Greeedy algorithm', description: 'Algorithm finding the best things first'}, {name: 'Divide and conquare', description: 'Solving problem breaking it into smaller part'}, {name: 'Searching algorithm', description: 'Binary search'}, {name: 'Sorting algorithm', description: 'Bubble, quick, merge, insertion, selection, heap sort'}])
 
 Subject.create(name: 'OOPL', description: 'Object oriented programming langualge: C++, Java, C#', tasks_attributes: [{name: 'Control structure', description: 'Loop, conditions'}, {name: 'Memory management', description: 'pointer, struct, linked list'}, {name: 'Collection', description: 'List, map, set'}, {name: 'Project', description: 'Project based on networking'}])
@@ -18,7 +18,7 @@ end
 
 manazirahsan = User.create(name: 'Manazir Ahsan', role:0, email: 'manazir.bd@gmail.com', password:"password", password_confirmation:"password")
 manna = User.create(name: 'Manna', role:1, email: 'manazirahsan.developer@gmail.com', password:"password", password_confirmation:"password")
-bador = User.create(name: 'Manazir Ahsan ( Manna )', role:1, email: 'manazir.ahsan@framgia.com', password:"password", password_confirmation:"password")
+bador = User.create(name: 'Manazir Ahsanss ( Manna )', role:1, email: 'manazir.ahsan@framgia.com', password:"password", password_confirmation:"password")
 mahmud = User.create(name: 'Md Mahmudur Rahman', role:0, email: 'md.mahmud.rahman@gmail.com', password:"password", password_confirmation:"password")
 noor = User.create(name: 'Noor Ahmed Biswas', role:0, email: 'noor.ahmed.biswas@gmail.com', password:"password", password_confirmation:"password")
 
@@ -30,3 +30,7 @@ CourseSubject.first.tasks = CourseSubject.first.subject.tasks
 
 # UserTask population
 User.first.tasks=User.first.course_subjects.first.tasks
+UserTask.create! user_id:3, task_id:7
+UserTask.create! user_id:3, task_id:8
+UserTask.create! user_id:3, task_id:9
+UserTask.create! user_id:3, task_id:10
