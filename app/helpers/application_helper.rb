@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def link_to_add_fields label, f, assoc
     new_obj = f.object.class.reflect_on_association(assoc).klass.new
     fields = f.fields_for assoc, new_obj, child_index: "new_#{assoc}" do |task|
@@ -16,4 +15,8 @@ module ApplicationHelper
     field + link
   end
 
+  def course_completed_percentage
+    completed_tasks = UserSubject.completed_tasks(current_user).count
+    percentage = completed_tasks*100/UserSubject.total_tasks(current_user).count
+  end
 end

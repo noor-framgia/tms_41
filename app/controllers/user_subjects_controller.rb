@@ -1,8 +1,9 @@
 class UserSubjectsController < ApplicationController
-  before_action :load_status
+  before_action :load_status, only: [:show, :update]
+  before_action :load_user, only: :index
 
   def index
-    @user_subjects = @user.user_subjects
+    @subjects = @user.subjects
   end
 
   def show
@@ -20,8 +21,12 @@ class UserSubjectsController < ApplicationController
   end
 
   private
-  def load_dependencies
+  def load_user
     @user = User.first # Incompatibility 1: Please see SpecificationNotes.md
+  end
+
+  def load_dependencies
+    load_user
     @user_subject = @user.user_subjects.find params[:id]
     @subject = @user_subject.subject
     @tasks = @subject.tasks

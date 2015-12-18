@@ -1,0 +1,27 @@
+<h1><%= t :user_subject %></h1>
+<div class="row">
+  <div class="col-sm-7 col-sm-offset-0">
+    <% if !@subjects.empty? %>
+      <% @subjects.each do |subject| %>
+        <div class="jumbotron">
+          <%= link_to user_subject_path subject do %>
+            <h2><%= subject.name %></h2>
+          <% end %>
+          <p><%= subject.description %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="jumbotron">
+        <p><%= t :subject_empty_user %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class=".col-sm-2 pull-right">
+    <div class="panel panel-default pull-right">
+      <div class="panel-heading"><%= t :activity_text %></div>
+      <div class="panel-body">
+        <!-- TODO: Implement Activity Here -->
+      </div>
+    </div>
+  </div>
+</div>

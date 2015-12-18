@@ -138,3 +138,7 @@ en:
   enrollment: "Enrollment"
   trainee:  "Trainee"
   supervisor: "Supervisor"
+  completed_text_progress: "% completed"
+  course_completed_text: "Course completed"
+  user_subject: "Your subjects in this course"
+  subject_empty_user: "You haven't been assigned any subject yet!"
