@@ -21,13 +21,17 @@ class User < ActiveRecord::Base
   has_many :subjects, through: :courses
 
   has_many :reports
-  enum role: [:supervisor, :trainee]
 
   has_many :user_tasks
   has_many :tasks, through: :user_tasks
 
   has_many :user_subjects
   has_many :course_subjects, through: :user_subjects
+
+  scope :supervisors, -> {supervisor}
+  scope :trainees, -> {trainee}
+
+  enum role: [:supervisor, :trainee]
 
   class << self
     def from_omniauth auth
@@ -64,6 +68,8 @@ class User < ActiveRecord::Base
       super
     end
   end
+
   include PublicActivity::Model
   tracked owner: ->(controller, model) {controller && controller.current_user}
+
 end
