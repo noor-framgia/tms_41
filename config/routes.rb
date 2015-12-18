@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     namespace :trainee do
       resources :users, only: [:index, :show, :destroy]
     end
+    resources :user_subjects, only: [:index, :show, :update]
   end
 
   mount Sidekiq::Web, at: "/sidekiq"

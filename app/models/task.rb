@@ -5,4 +5,5 @@ class Task < ActiveRecord::Base
   has_many :user_tasks
 
   belongs_to :user
+  belongs_to :user_subject_task
 end

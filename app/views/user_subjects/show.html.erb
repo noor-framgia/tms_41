@@ -1,0 +1,38 @@
+<h2><%= @user_subject.subject.name %></h2>
+
+<div class="row">
+  <div class="col-sm-8">
+    <%= form_for @user_subject do |f| %>
+      <%= f.fields_for :user_tasks do |builder| %>
+        <%= builder.hidden_field :user_id, value: @user.id %>
+        <% if builder.object.task_id %>
+          <%= builder.label :task_id, builder.object.task.name %>
+          <%= builder.check_box :task_id, {checked: true, disabled: true},
+            checked_value=builder.object.task_id %>
+        <% else %>
+          <%= builder.label :task_id, @new_tasks.first.name %>
+          <%= builder.check_box :task_id, {checked: false, disabled:
+            @user_subject.finished?}, checked_value=@new_tasks.first.id %>
+          <% @new_tasks.shift %>
+        <% end %>
+      <% end %>
+
+      <% if @user_subject._new? %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+    <hr>
+    <h3><%= t :basic %></h3>
+    <p><%= t :start_date %>: <%= @status[1] %></p>
+    <p><%= t :end_date %>: <%= @status[2] %></p>
+    <p><%= t :status %>: <%= @status[0].humanize %></p>
+
+    <h3><%= t :instruction %></h3>(<%= link_to t(:hide), '#',
+      html_options={ class: "swap_btn" } %>)
+    <p class="inst" ><%= @user_subject.subject.description %></p>
+  </div>
+  <div class="col-sm-2">
+    <h3><% t :activity_log %></h3>
+    <!-- PLACEHOLDER: Progress -->
+  </div>
+</div>
