@@ -16,7 +16,7 @@ Rails.application.routes.draw do
         resource :assign_trainee
         resource :assign_supervisor
       end
-      resources :course_subjects
+      resources :course_subjects, only: [:edit, :update]
       resources :users_courses
     end
 
