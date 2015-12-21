@@ -13,12 +13,9 @@
           <%= link_to t(:close), supervisor_course_path(@course, type: "close"), method: :patch,
             data: {confirm: t(:confirm_message_close)}, class: "btn btn-danger" %>
           <% end %>
-        <% unless @course.close? %>
-          <%= link_to t(:manipulate_task), new_supervisor_course_subject_path(id: @course.id), class: "btn btn-info" %>
-        <% end %>
         <% if @course.close? %>
           <%= link_to t(:delete_course), [:supervisor, @course], method: :delete,
-                    class: "btn btn-danger", data: { confirm: t(:confirm) } %>
+            class: "btn btn-danger", data: {confirm: t(:confirm)} %>
         <% end %>
       </div>
     </div>
@@ -42,8 +39,9 @@
     <table class="table table-bordered table-striped">
       <thead>
       <tr>
-        <th><%= t (:subject_name) %></th>
-        <th><%= t (:subject_description) %></th>
+        <th><%= t :subject_name %></th>
+        <th><%= t :subject_description %></th>
+        <th></th>
       </tr>
       </thead>
 
@@ -52,6 +50,13 @@
         <tr>
           <td><%= link_to subject.name, [:supervisor, subject]  %></td>
           <td><%= subject.description.truncate 50 %></td>
+          <td>
+            <% unless @course.close? %>
+              <% course_subject = CourseSubject.find_by_course_id_and_subject_id(@course.id, subject.id) %>
+              <%= link_to t(:manipulate_task),
+                edit_supervisor_course_subject_path(course_subject), class: "btn btn-info" %>
+            <% end %>
+          </td>
         </tr>
         </tbody>
 

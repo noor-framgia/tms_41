@@ -1,0 +1,25 @@
+<% provide :title, t(:update_course)%>
+<div class="center">
+  <h1><%= t :manipulate_task %></h1>
+</div>
+<div class="row">
+  <div class="panel panel-default panel-box">
+    <div class="panel-heading panel-size-margin">
+      <%= @course.name + " :: " + @subject.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= form_for [:supervisor, @course_subject], method: :patch do %>
+        <%= hidden_field_tag :course_id, @course.id %>
+        <%= hidden_field_tag :subject_id, @subject.id %>
+        <%= hidden_field_tag "course_subject[id]", @course_subject.id %>
+        <%= collection_check_boxes(:course_subject, :task_ids,
+          @subject.tasks, :id, :name) do |b| %>
+          <%= b.label("data-value" => b.value) { b.check_box + b.text } %><br>
+        <% end %><br>
+        <%= submit_tag t(:manipulate_task), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
