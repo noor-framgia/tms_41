@@ -69,6 +69,7 @@ group :development, :test do
   gem "byebug"
   gem "rspec-rails", "~> 3.0"
   gem "factory_girl_rails"
+  gem "shoulda-matchers"
 end
 
 group :test do
@@ -79,6 +80,7 @@ group :test do
   gem "capybara"
   gem "guard-rspec"
   gem "launchy"
+  gem "shoulda"
 end
 
 group :development do
