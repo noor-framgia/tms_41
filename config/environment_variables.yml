@@ -7,3 +7,6 @@ test:
 production:
   GMAIL_USERNAME: framgia.bangladesh
   GMAIL_PASSWORD: mannamanna
+test:
+  GMAIL_USERNAME: framgia.bangladesh
+  GMAIL_PASSWORD: mannamanna

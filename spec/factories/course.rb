@@ -2,10 +2,10 @@ require "faker"
 
 FactoryGirl.define do
   factory :course do
-    name {Faker::Lorem.word}
-    description {Faker::Lorem.paragraph}
-    start_date {Faker::Date.backward}
-    end_date {Faker::Date.forward}
-    status 1
+    name Faker::Lorem.word
+    description Faker::Lorem.sentence
+    start_date Faker::Time.between(2.years.ago, 1.year.ago)
+    end_date Faker::Time.between(1.year.ago, 1.week.ago)
+    status Course.statuses[:open]
   end
 end
