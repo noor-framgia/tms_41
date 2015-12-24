@@ -30,8 +30,8 @@
 
   <div class="center bottom-aligned-row banner"><br/>
     <% if @course.open? %>
-      <%= link_to t(:assign_supervisor), supervisor_users_course_path, class: "btn btn-warning" %>
-      <%= link_to t(:assign_trainee), supervisor_users_course_path, class: "btn btn-warning" %>
+      <%= link_to t(:assign_supervisor), supervisor_users_courses_path, class: "btn btn-warning" %>
+      <%= link_to t(:assign_trainee), supervisor_users_courses_path, class: "btn btn-warning" %>
     <% end %>
   </div>
 

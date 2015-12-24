@@ -36,9 +36,9 @@ class Supervisor::CoursesController < ApplicationController
     @course = Course.new course_params
     if @course.save
       flash[:success] = t (:course_created)
-      redirect_to supervisor_courses_url
+      render :show
     else
-      redirect_to new_supervisor_course_url
+      render :new
     end
   end
 
