@@ -8,4 +8,12 @@ FactoryGirl.define do
     end_date Faker::Time.between(1.year.ago, 1.week.ago)
     status Course.statuses[:open]
   end
+
+  factory :invalid_course do
+    name nil
+    description Faker::Lorem.sentence
+    start_date Faker::Time.between(2.years.ago, 1.year.ago)
+    end_date Faker::Time.between(1.year.ago, 1.week.ago)
+    status Course.statuses[:open]
+  end
 end
