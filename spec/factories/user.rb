@@ -3,8 +3,12 @@ require "faker"
 FactoryGirl.define do
   factory :user do
     name {Faker::Name}
-    role 0
     email {Faker::Internet.email}
     password {Faker::Internet.password 6}
+    role 1
+    factory :supervisor do
+    role 0
+    end
   end
+
 end
